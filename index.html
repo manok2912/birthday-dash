@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+
+    <div class="container">
+        <div class="row m-5">
+          <div class="col"></div>
+          <div class="col text-center">
+            <label for="birthday" class="text-center">Birthday</label>
+            <form class="form-floating">
+                <input type="date" class="form-control" id="birthday" name="birthday">
+                <label for="floatingInputValue">Input with value</label>
+            </form>
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Years</span><h6 id="years"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Months</span><h6 id="months"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Weeks</span><h6 id="weeks"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Days</span><h6 id="days"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Hours</span><h6 id="hours"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Minutes</span><h6 id="minutes"></h6></div>
+          <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Seconds</span><h6 id="seconds"></h6></div>
+        </div>
+        <div class="row">
+            <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Milliseconds</span><h6 id="milliseconds"></h6></div>
+            <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Microseconds</span><h6 id="microseconds"></h6></div>
+            <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Nanoseconds</span><h6 id="nanoseconds"></h6></div>
+            <div class="col text-center border border-3 border-secondary rounded-pill"><span class="badge bg-light text-dark m-3">Picoseconds</span><h6 id="picoseconds"></h6></div>
+        </div>
+      </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<!--<script src="https://unpkg.com/human-format@0.10/index.js"></script> -->
+<script src="humanreadv2.js"></script>
+<script src="humanread.js"></script>
+
+<script>
+
+    const date = new Date()
+    const birthday = document.getElementById("birthday")
+    birthday.addEventListener('change' , getDiff)
+
+    const years = document.getElementById("years")
+    const months = document.getElementById("months")
+    const weeks = document.getElementById("weeks")
+    const days = document.getElementById("days")
+    const hours = document.getElementById("hours")
+    const minutes = document.getElementById("minutes")
+    const seconds = document.getElementById("seconds")
+
+    const milliseconds = document.getElementById("milliseconds")
+    const microseconds = document.getElementById("microseconds")
+    const nanoseconds = document.getElementById("nanoseconds")
+    const picoseconds = document.getElementById("picoseconds")
+
+    function start() {
+        var dateString = date.getFullYear()+"-"+(date.getMonth() + 1)+"-"+date.getDate()
+        birthday.value = dateString
+    }
+
+    start();
+
+
+
+    function getDiff() {
+
+        const newDate = new Date(birthday.value)
+
+        console.log(birthday.value);
+        console.log(newDate);
+
+        var Difference_In_Time = date.getTime() - newDate.getTime(); 
+
+        console.log(Difference_In_Time);
+
+        years.innerHTML = humanFormat(Math.floor(Difference_In_Time / 31536000000));
+        months.innerHTML = humanFormat(Math.floor(Difference_In_Time / 2628000000));
+        weeks.innerHTML = humanFormat(Math.floor(Difference_In_Time / 604800000));
+        days.innerHTML = humanFormat(Math.floor(Difference_In_Time / 86400000));
+        hours.innerHTML = humanFormat(Math.floor(Difference_In_Time / 3600000));
+        minutes.innerHTML = humanFormat(Math.floor(Difference_In_Time / 60000));
+        seconds.innerHTML = humanFormat(Math.floor(Difference_In_Time / 1000));
+
+        milliseconds.innerHTML = humanFormat(Math.floor(Difference_In_Time));
+
+        microseconds.innerHTML = humanFormat(Math.floor(Difference_In_Time * 1000));
+        nanoseconds.innerHTML = humanFormat(Math.floor(Difference_In_Time * 1000000));
+        picoseconds.innerHTML = humanFormat(Math.floor(Difference_In_Time * 1000000000));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        console.log("-----");
+
+        
+
+        
+    }
+
+    
+
+
+
+
+
+
+</script>
+</html>
